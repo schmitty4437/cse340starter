@@ -1,0 +1,12 @@
+<!-- View will contain content heading, message, and inventory items display -->
+<div class="container">
+    <% if (title) { %>
+        <h1>
+            <%= title %>
+        </h1>
+        <% } else { res.redirect('/') } %>
+
+            <%# messages() %>
+
+                <%- grid %>
+</div>

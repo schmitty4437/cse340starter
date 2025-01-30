@@ -87,9 +87,13 @@ nav ul {
 
 nav li {
   padding: 10px 20px;
-  color: #fff;
   margin-right: 10px;
   font-weight: 600;
+}
+
+nav li a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .hero {
@@ -190,6 +194,64 @@ footer {
   padding: 30px;
 }
 
+
+/* Inventory Styles */
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+#inv-display li {
+  flex: 1 1 100%;
+  list-style-type: none;
+  border: 2px solid rgb(1, 1, 45);
+  border-radius: 25px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  position: relative;
+}
+
+#inv-display li img { 
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+#inv-display li .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#inv-display li hr {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#inv-display li a,
+#inv-display li .price,
+#inv-display li h2,
+#inv-display li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1em;
+}
+
+.container h1 {
+  flex: 1 1 100%;
+}
+
+
+
+
 /* Large screen */
 @media screen and (min-width: 768px) {
   #wrapper {
@@ -260,6 +322,11 @@ footer {
 
   .upgrade-item {
     flex-direction: column;
+  }
+
+  /* Inventory Styles */
+  #inv-display li {
+    flex: 1 1 calc(33.33% - 30px);
   }
 }
 
