@@ -251,6 +251,45 @@ footer {
 
 
 
+/* Inventory details page styles */
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.vehicle-info {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.highlight {
+  background-color: #67d3e9;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.label {
+  
+  font-weight: bold;
+}
+
+.description {
+  background-color: #d1e7ff;
+}
+
+
 
 /* Large screen */
 @media screen and (min-width: 768px) {
@@ -327,6 +366,25 @@ footer {
   /* Inventory Styles */
   #inv-display li {
     flex: 1 1 calc(33.33% - 30px);
+  }
+
+/* Large view inventory details page styles */
+  .vehicle-detail {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 40px;
+  }
+
+  .vehicle-detail img {
+    width: 50%;
+    max-width: 500px;
+  }
+
+  .vehicle-info {
+    width: 50%;
+    max-width: 500px;
   }
 }
 
