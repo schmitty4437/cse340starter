@@ -72,7 +72,7 @@ Util.buildDetailView = async function(vehicle) {
     detail += `<p class="highlight label">Price: $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>`
     detail += `<p><span class="label">Description:</span> ${vehicle.inv_description}</p>`
     detail += `<p class="highlight"><span class="label">Color:</span> ${vehicle.inv_color}</p>`
-    detail += `<p><span class="label">Miles:</span> ${vehicle.inv_miles}</p>`
+    detail += `<p><span class="label">Miles:</span> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>`
     detail += '</div>'
     detail += '</div>'
   } else {
