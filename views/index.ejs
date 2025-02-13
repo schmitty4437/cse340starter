@@ -1,17 +1,18 @@
 <div class="container">
     <section class="hero">
         <h1>Welcome to CSE Motors!</h1>
-        <!-- <img src="/images/vehicles/delorean-tn.jpg" alt="DMC Delorean"> -->
-        <picture>
-            <source media="(max-width: 480px)" srcset="/images/vehicles/delorean-tn.jpg">
-            <source media="(min-width: 768px)" srcset="/images/vehicles/delorean.jpg">
-            <img src="/images/vehicles/delorean.jpg" alt="DMC Delorean">
-        </picture>
-        <div class="delorean-feature">
-            <h3>DMC Delorean</h3>
-            <p>3 cup holders<br>Superman doors<br>Fuzzy dice!</p>
-            <button>Own Today</button>
-        </div>
+        <%- messages() %>
+            <!-- <img src="/images/vehicles/delorean-tn.jpg" alt="DMC Delorean"> -->
+            <picture>
+                <source media="(max-width: 480px)" srcset="/images/vehicles/delorean-tn.jpg">
+                <source media="(min-width: 768px)" srcset="/images/vehicles/delorean.jpg">
+                <img src="/images/vehicles/delorean.jpg" alt="DMC Delorean">
+            </picture>
+            <div class="delorean-feature">
+                <h3>DMC Delorean</h3>
+                <p>3 cup holders<br>Superman doors<br>Fuzzy dice!</p>
+                <button>Own Today</button>
+            </div>
     </section>
     <section class="reviews">
         <h2>DMC Delorean Reviews</h2>

@@ -290,6 +290,65 @@ footer {
 }
 
 
+/* Login styles */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgb(1, 1, 45);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-form button {
+  background-color: #0064ce;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.form-form button:hover {
+  background-color: #01b0d3;
+}
+
+.form-container p a {
+  color: #01b0d3;
+}
+
+.form-container p a:hover {
+  color: #fff;
+}
+
+
+
 
 /* Large screen */
 @media screen and (min-width: 768px) {
@@ -385,6 +444,28 @@ footer {
   .vehicle-info {
     width: 50%;
     max-width: 500px;
+  }
+
+  /*Form large view styles */
+  .form-wrapper {
+    justify-content: center;
+  }
+
+  .form-container {
+    width: 50%;
+    max-width: 500px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .form input {
+    font-size: 1.2rem;
+    padding: 12px;
+  }
+
+  .form button {
+    font-size: 1.2rem;
+    padding: 12px;
   }
 }
 
