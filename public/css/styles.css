@@ -325,7 +325,7 @@ footer {
   font-size: 1rem;
 }
 
-.form-form button {
+.form button {
   background-color: #0064ce;
   color: white;
   padding: 10px;
@@ -335,7 +335,7 @@ footer {
   font-size: 1.1rem;
 }
 
-.form-form button:hover {
+.form button:hover {
   background-color: #01b0d3;
 }
 
@@ -345,6 +345,31 @@ footer {
 
 .form-container p a:hover {
   color: #fff;
+}
+
+#pswdBtn {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #000;
+  background-color: #01b0d3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+#pswdBtn:hover {
+  background-color: #0064ce;
+}
+
+.flash-messages {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 

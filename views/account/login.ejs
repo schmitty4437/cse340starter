@@ -7,7 +7,7 @@
         <div class="form-container">
             <% if (messages) { %>
                 <div class="flash-messages">
-                    <%= messages() %>
+                    <%- messages() %>
                 </div>
                 <% } %>
 
@@ -17,6 +17,8 @@
 
                         <label for="account_password">Password:</label>
                         <input type="password" id="account_password" name="account_password" required>
+
+                        <span id="pswdBtn">Show Password</span>
 
                         <button type="submit">Login</button>
                     </form>
