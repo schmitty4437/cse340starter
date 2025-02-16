@@ -366,13 +366,20 @@ footer {
   background-color: #0064ce;
 }
 
-.flash-messages {
+.flash-messages, .notice {
   color: red;
-  text-align: center;
   margin-bottom: 10px;
 }
 
-
+input:required:invalid, input:focus:invalid {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+ }
+ 
+ input:required:valid {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+ }
 
 
 /* Large screen */
