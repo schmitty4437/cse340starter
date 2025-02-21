@@ -39,4 +39,56 @@ invCont.buildByInvId = async function(req, res, next) {
   })
 }
 
+
+/* ***************************
+ *  Render Management View
+ * ************************** */
+invCont.buildManagementView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  // const classificationSelect = await utilities.buildClassificationList();
+  res.render("inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+    // classificationSelect,
+  });
+};
+
+/* ****************************
+ * Deliver add classification view
+ **************************** */
+invCont.buildAddClassificationView = async function (req, res) {
+  let nav = await utilities.getNav();
+  res.render("inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null,
+  });
+};
+
+/* ****************************
+* Process classification submission
+**************************** */
+invCont.addClassification = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+
+  const regResult = await invModel.createClassification(classification_name);
+
+  if (regResult) {
+    req.flash("notice", `The classification '${classification_name}' was successfully added.`);
+    res.status(201).render("inventory/management", {
+      title: "Inventory Management",
+      nav,
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Sorry, the classification could not be added.");
+    res.status(501).render("inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+    });
+  }
+};
+
 module.exports = invCont

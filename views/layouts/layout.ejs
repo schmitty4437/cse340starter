@@ -1,20 +1,16 @@
-<div class="container">
-    <% if (title) { %>
-        <h1>
-            <%= title %>
-        </h1>
-        <% } else { res.redirect('/') } %>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
 
-            <% if (messages) { %>
-                <div class="flash-messages">
-                    <%- messages() %>
-                </div>
-                <% } %>
+    <body>
+        <div id="wrapper">
+            <%- include('../partials/header') %>
+                <%- include('../partials/navigation') %>
+                    <main>
+                        <%- body %>
+                    </main>
+                    <%- include('../partials/footer') %>
+        </div>
+    </body>
 
-                    <nav>
-                        <ul>
-                            <li><a href="/inv/add-classification">Add New Classification</a></li>
-                            <li><a href="/inv/add-inventory">Add New Inventory</a></li>
-                        </ul>
-                    </nav>
-</div>
+</html>

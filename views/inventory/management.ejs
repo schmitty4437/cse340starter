@@ -5,21 +5,28 @@
         </h1>
         <% } else { res.redirect('/') } %>
 
-        <div class="form-wrapper">
-            <div class="form-container">
-                <% if (messages) { %>
-                    <div class="flash-messages">
-                        <%- messages() %>
-                    </div>
-                    <% } %>
-    
-                        <% if (errors) { %>
-                            <ul class="notice">
-                                <% errors.array().forEach(error=> { %>
-                                    <li>
-                                        <%= error.msg %>
-                                    </li>
-                                    <% }) %>
-                            </ul>
-                            <% } %>
-</div>
+            <div class="form-wrapper">
+                <div class="form-container">
+                    <% if (messages) { %>
+                        <div class="flash-messages">
+                            <%- messages() %>
+                        </div>
+                        <% } %>
+
+                            <% if (errors) { %>
+                                <ul class="notice">
+                                    <% errors.array().forEach(error=> { %>
+                                        <li>
+                                            <%= error.msg %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <% } %>
+
+
+                                    <ul>
+                                        <li><a href="/inv/add-classification">Add New Classification</a></li>
+                                        <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+                                    </ul>
+
+                </div>
