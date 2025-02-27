@@ -45,17 +45,15 @@ invCont.buildByInvId = async function(req, res, next) {
  * ************************** */
 invCont.buildManagementView = async function (req, res, next) {
   let nav = await utilities.getNav();
-  // const classificationSelect = await utilities.buildClassificationList();
   res.render("inventory/management", {
     title: "Vehicle Management",
     nav,
     errors: null,
-    // classificationSelect,
   });
 };
 
 /* ****************************
- * Deliver add classification view
+ * Build add classification view
  **************************** */
 invCont.buildAddClassificationView = async function (req, res) {
   let nav = await utilities.getNav();
@@ -90,5 +88,35 @@ invCont.addClassification = async function (req, res) {
     });
   }
 };
+
+
+/* ****************************
+ * Build add inventory view
+ **************************** */
+invCont.buildAddInventoryView = async (req, res, next) => {
+  let classificationList = await utilities.buildClassificationList()
+  let nav = await utilities.getNav()
+  res.render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      errors: null
+  })
+}
+
+/* ****************************
+ * Process add inventory view
+ **************************** */
+invCont.addInventory = async (req, res) => {
+  const result = await invModel.createInventory(req.body)
+  if (result) {
+      req.flash("success", "Inventory item added successfully!")
+      res.redirect("/inventory")
+  } else {
+      req.flash("error", "Error adding inventory item.")
+      res.redirect("/inventory/add-inventory")
+  }
+}
+
 
 module.exports = invCont

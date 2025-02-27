@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator")
-const utilities = require(".") // Assuming utilities.js has getNav() function
+const utilities = require(".")
 const validate = {}
 
 /* *****************************
