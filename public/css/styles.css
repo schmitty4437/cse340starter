@@ -381,6 +381,75 @@ input:required:invalid, input:focus:invalid {
   background-color: #e6ffe6;
  }
 
+.form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  color: #000;
+  appearance: none;
+  cursor: pointer;
+}
+
+.form select:focus {
+  border: 2px solid #01b0d3;
+  outline: none;
+  background-color: #e6f7ff;
+}
+
+.form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form select:required:invalid,
+.form textarea:required:invalid {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+.form select:required:valid,
+.form textarea:required:valid {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+}
+
+.management-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.management-links li {
+  margin-bottom: 10px;
+}
+
+.management-links a {
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  display: inline-block;
+  background-color: #0064ce;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.management-links a:hover {
+  background-color: #01b0d3;
+  color: #fff;
+}
+
 
 /* Large screen */
 @media screen and (min-width: 768px) {

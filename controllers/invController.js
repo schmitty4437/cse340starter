@@ -111,10 +111,10 @@ invCont.addInventory = async (req, res) => {
   const result = await invModel.createInventory(req.body)
   if (result) {
       req.flash("success", "Inventory item added successfully!")
-      res.redirect("/inventory")
+      res.redirect("/inv")
   } else {
       req.flash("error", "Error adding inventory item.")
-      res.redirect("/inventory/add-inventory")
+      res.redirect("/inv/add-inventory")
   }
 }
 
