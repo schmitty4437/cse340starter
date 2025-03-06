@@ -381,7 +381,7 @@ input:required:invalid, input:focus:invalid {
   background-color: #e6ffe6;
  }
 
-.form select {
+.form select, #classificationList {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -446,6 +446,28 @@ input:required:invalid, input:focus:invalid {
 }
 
 .management-links a:hover {
+  background-color: #01b0d3;
+  color: #fff;
+}
+
+/* Vehicle Management Table styles  */
+td {
+  padding: 5px;
+}
+
+td a {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 4px 6px;
+  display: inline-block;
+  background-color: #0064ce;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+td a:hover {
   background-color: #01b0d3;
   color: #fff;
 }

@@ -59,5 +59,27 @@ validate.checkInventoryData = async (req, res, next) => {
     next();
 };
 
+/* ******************************
+ * Check Update Inventory Data
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+    const { inv_id } = req.body;
+    let errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav();
+        let classificationList = await utilities.buildClassificationList(req.body.classification_id);
+
+        res.render("inventory/edit-inventory", {
+            errors,
+            title: "Edit " + `${req.body.inv_make} ${req.body.inv_model}`,
+            nav,
+            classificationList,
+            inv_id,
+            ...req.body
+        });
+        return;
+    }
+    next();
+};
 
 module.exports = validate
