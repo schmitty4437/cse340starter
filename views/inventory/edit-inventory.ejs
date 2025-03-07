@@ -22,7 +22,7 @@
                                         <% }) %>
                                 </ul>
                                 <% } %>
-                                    <form class="form" action="/inv/update" method="post">
+                                    <form id="updateForm" class="form" action="/inv/update" method="post">
                                         <label for="classification_id">Classification:</label>
                                         <%- classificationSelect %>
 
@@ -66,7 +66,7 @@
                                                 pattern="^[a-zA-Z\s]+$"
                                                 value="<%= typeof inv_color !== 'undefined' ? inv_color : '' %>">
 
-                                            <button type="submit">Update Vehicle</button>
+                                            <button type="submit" disabled>Update Vehicle</button>
                                             <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%=
                                                 locals.inv_id %>"
                                                 <% } %>>
@@ -74,3 +74,4 @@
                 </div>
             </div>
 </div>
+<script src="/js/inv-update.js"></script>
