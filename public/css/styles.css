@@ -472,6 +472,29 @@ td a:hover {
   color: #fff;
 }
 
+.submit-button {
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #0064ce;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container a.submit-button {
+  color: #fff;
+}
+
+.submit-button:hover {
+  background-color: #01b0d3;
+}
+
+.form-container a.submit-button {
+  color: #fff;
+}
 
 /* Large screen */
 @media screen and (min-width: 768px) {

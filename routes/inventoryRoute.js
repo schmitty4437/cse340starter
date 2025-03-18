@@ -13,48 +13,55 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
 // management view activity
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+router.get("/", utilities.checkAdminAccess, utilities.handleErrors(invController.buildManagementView)); // Added checkAdminAccess to restrict to Employee/Admin
 
 // classification view activity
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
+router.get("/add-classification", utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddClassificationView)); // Added checkAdminAccess to restrict to Employee/Admin
 
 // classification activity
 router.post(
   "/add-classification",
+  utilities.checkAdminAccess, // Added checkAdminAccess to restrict to Employee/Admin
   classificationValidation.classificationRules(), 
   classificationValidation.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 );
 
 //add inventory view activity
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView))
+router.get("/add-inventory", utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddInventoryView)) // Added checkAdminAccess to restrict to Employee/Admin
 
 //add inventory activity
 router.post(
     "/add-inventory",
+    utilities.checkAdminAccess, // Added checkAdminAccess to restrict to Employee/Admin
     inventoryValidation.inventoryRules(),
     inventoryValidation.checkInventoryData,
     utilities.handleErrors(invController.addInventory)
 )
 
 // Get inventory for AJAX Route
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventory/:classification_id", utilities.checkAdminAccess, utilities.handleErrors(invController.getInventoryJSON))
 
 // Get modify route
-router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventoryView))
+router.get("/edit/:inv_id", utilities.checkAdminAccess, utilities.handleErrors(invController.buildEditInventoryView))
 
 // watch and direct incoming request
 router.post(
   "/update",
+  utilities.checkAdminAccess,
   inventoryValidation.inventoryRules(),
   inventoryValidation.checkInventoryData,
   utilities.handleErrors(invController.updateInventory)
 )
 
 // Route to build delete confirmation view
-router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteConfirmationView))
+router.get("/delete/:inv_id", utilities.checkAdminAccess, utilities.handleErrors(invController.buildDeleteConfirmationView))
 
-// Route to process inventory deletion
-router.post("/delete", utilities.handleErrors(invController.deleteInventory))
+// Route to process inventory deletion (W11)
+router.post(
+  "/delete",
+  utilities.checkAdminAccess,
+  utilities.handleErrors(invController.deleteInventory)
+)
 
 module.exports = router;

@@ -143,4 +143,25 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+ /* ****************************************
+ * W11 Task 2
+ * Middleware to restrict access to admin routes
+ * Checks if user is logged in and has 'Employee' or 'Admin' account type.
+ * Redirects to login with a message if unauthorized or not logged in.
+ **************************************** */
+Util.checkAdminAccess = (req, res, next) => {
+  if (res.locals.loggedin) {
+    const accountType = res.locals.accountData.account_type;
+    if (accountType === "Employee" || accountType === "Admin") {
+      next();
+    } else {
+      req.flash("notice", "Access denied. Employee or Admin account required.");
+      res.redirect("/account/login");
+    }
+  } else {
+    req.flash("notice", "Please log in with an Employee or Admin account.");
+    res.redirect("/account/login");
+  }
+};
+
 module.exports = Util

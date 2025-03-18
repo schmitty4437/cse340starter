@@ -41,4 +41,38 @@ router.post("/login",
  *************************/
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement));
 
+/* ***********************
+ * Account routes
+ * Update account view (W11 Task 3)
+ *************************/
+router.get("/update/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount));
+
+/* ***********************
+ * Account routes
+ * Process account update (W11 Task 5)
+ *************************/
+router.post("/update",
+    utilities.checkLogin,
+    regValidate.accountUpdateRules(),
+    regValidate.checkAccountUpdateData,
+    utilities.handleErrors(accountController.updateAccount)
+);
+
+/* ***********************
+ * Account routes
+ * Process password change (W11 Task 5)
+ *************************/
+router.post("/change-password",
+    utilities.checkLogin,
+    regValidate.passwordChangeRules(),
+    regValidate.checkPasswordChangeData,
+    utilities.handleErrors(accountController.changePassword)
+);
+
+/* ***********************
+ * Account routes
+ * Logout process (W11 Task 6)
+ *************************/
+router.get("/logout", utilities.handleErrors(accountController.logoutAccount));
+
 module.exports = router;

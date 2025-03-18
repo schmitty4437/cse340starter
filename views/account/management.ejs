@@ -20,7 +20,20 @@
                                 <% }) %>
                         </ul>
                         <% } %>
-                            <p>You're logged in</p>
+                            <!-- W11 Task 3 -->
+                            <!-- Greeting based on account type -->
+                            <h2>Welcome <%= account_firstname %>
+                            </h2>
+
+                            <!-- Update account link for all users -->
+                            <p><a href="/account/update/<%= account_id %>" class="submit-button">Update Account
+                                    Information</a></p>
+
+                            <!-- Inventory management section for Employee/Admin only -->
+                            <% if (account_type==="Employee" || account_type==="Admin" ) { %>
+                                <h3>Inventory Management</h3>
+                                <p><a href="/inv/" class="submit-button">Manage Inventory</a></p>
+                                <% } %>
         </div>
     </div>
 </div>
