@@ -327,7 +327,7 @@ footer {
 
 .form button {
   background-color: #0064ce;
-  color: white;
+  color: #fff;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -367,12 +367,17 @@ footer {
 }
 
 .flash-messages, .notice {
-  color: red;
+  color: #ff0000;
+  width: 100%;
+  display: block;
   margin-bottom: 10px;
+  text-align: center;
+  clear: both;
+  list-style: none;
 }
 
 input:required:invalid, input:focus:invalid {
-  border: 2px solid red;
+  border: 2px solid #ff0000;
   background-color: #ffe6e6;
  }
  
@@ -386,7 +391,7 @@ input:required:invalid, input:focus:invalid {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  background-color: white;
+  background-color: #fff;
   color: #000;
   appearance: none;
   cursor: pointer;
@@ -409,13 +414,13 @@ input:required:invalid, input:focus:invalid {
 
 .form select:required:invalid,
 .form textarea:required:invalid {
-  border: 2px solid red;
+  border: 2px solid #ff0000;
   background-color: #ffe6e6;
 }
 
 .form select:required:valid,
 .form textarea:required:valid {
-  border: 2px solid green;
+  border: 2px solid #008000;
   background-color: #e6ffe6;
 }
 
@@ -435,7 +440,7 @@ input:required:invalid, input:focus:invalid {
   display: inline-block;
   width: 300px;
   text-align: center;
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
   padding: 8px 12px;
@@ -458,7 +463,7 @@ td {
 td a {
   display: inline-block;
   text-align: center;
-  color: white;
+  color: #fff;
   text-decoration: none;
   padding: 4px 6px;
   display: inline-block;
