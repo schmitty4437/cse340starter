@@ -13,27 +13,28 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
 // management view activity
-router.get("/", utilities.checkAdminAccess, utilities.handleErrors(invController.buildManagementView)); // Added checkAdminAccess to restrict to Employee/Admin
+router.get("/", utilities.checkAdminAccess, utilities.handleErrors(invController.buildManagementView)); 
 
 // classification view activity
-router.get("/add-classification", utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddClassificationView)); // Added checkAdminAccess to restrict to Employee/Admin
+router.get("/add-classification", utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddClassificationView)); 
 
 // classification activity
 router.post(
   "/add-classification",
-  utilities.checkAdminAccess, // Added checkAdminAccess to restrict to Employee/Admin
+  utilities.checkAdminAccess,
   classificationValidation.classificationRules(), 
   classificationValidation.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 );
 
 //add inventory view activity
-router.get("/add-inventory", utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddInventoryView)) // Added checkAdminAccess to restrict to Employee/Admin
+router.get("/add-inventory",
+  utilities.checkAdminAccess, utilities.handleErrors(invController.buildAddInventoryView))
 
 //add inventory activity
 router.post(
     "/add-inventory",
-    utilities.checkAdminAccess, // Added checkAdminAccess to restrict to Employee/Admin
+    utilities.checkAdminAccess,
     inventoryValidation.inventoryRules(),
     inventoryValidation.checkInventoryData,
     utilities.handleErrors(invController.addInventory)
@@ -55,7 +56,9 @@ router.post(
 )
 
 // Route to build delete confirmation view
-router.get("/delete/:inv_id", utilities.checkAdminAccess, utilities.handleErrors(invController.buildDeleteConfirmationView))
+router.get("/delete/:inv_id",
+  utilities.checkAdminAccess,
+  utilities.handleErrors(invController.buildDeleteConfirmationView))
 
 // Route to process inventory deletion (W11)
 router.post(

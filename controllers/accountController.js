@@ -128,7 +128,7 @@ async function accountLogin(req, res) {
 }
 
 /* ****************************************
- *  Deliver account update view (W11 Task 5)
+ *  Deliver account update view (W11 Task 4)
  * ************************************ */
 async function buildUpdateAccount(req, res, next) {
   let nav = await utilities.getNav();
