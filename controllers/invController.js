@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const reviewModel = require("../models/review-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -23,21 +24,34 @@ invCont.buildByClassificationId = async function (req, res, next) {
 /* ***************************
  *  Build inventory item detail view
  * ************************** */
-invCont.buildByInvId = async function(req, res, next) {
-  // Used for testing error
-  // throw new Error("Test error")
-
-  const inv_id = req.params.invId
-  const data = await invModel.getInventoryById(inv_id)
-  const vehicleDetails = await utilities.buildDetailView(data)
-  let nav = await utilities.getNav()
-  const vehicleName = data.inv_year + " " + data.inv_make + " " + data.inv_model
-  res.render("./inventory/inventory-details", {
-    title: vehicleName,
-    nav,
-    vehicleDetails
-  })
-}
+invCont.buildByInvId = async function (req, res, next) {
+  const inv_id = parseInt(req.params.invId);
+  try {
+    const data = await invModel.getInventoryById(inv_id);
+    if (data) {
+      const vehicleDetails = await utilities.buildDetailView(data);
+      // Task 3.C Fetch and display reviews for this vehicle
+      const reviews = await reviewModel.getReviewsByInvId(inv_id);
+      let nav = await utilities.getNav();
+      const vehicleName = `${data.inv_year} ${data.inv_make} ${data.inv_model}`;
+      res.render("./inventory/inventory-details", {
+        title: vehicleName,
+        nav,
+        vehicleDetails,
+        reviews, // Task 3.C Pass reviews to view
+        inv_id, // Task 3.C For review form
+        messages: req.flash(), // Task 3.C Show flash messages after review actions
+        errors: null,
+      });
+    } else {
+      req.flash("notice", "Vehicle not found.");
+      res.redirect("/inv/");
+    }
+  } catch (error) {
+    req.flash("notice", "Error loading vehicle details: " + error.message);
+    res.redirect("/inv/");
+  }
+};
 
 
 /* ***************************

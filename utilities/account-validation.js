@@ -135,6 +135,21 @@ validate.passwordChangeRules = () => {
   ]
 }
 
+/* **********************************
+ * Review Validation Rules (Added for Task 5)
+ * Rules to validate review text input
+ * ********************************* */
+validate.reviewRules = () => {
+  return [
+    body("review_text")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide review text."),
+  ]
+}
+
   /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
@@ -216,6 +231,28 @@ validate.checkPasswordChangeData = async (req, res, next) => {
       account_lastname: accountData.account_lastname,
       account_email: accountData.account_email,
       account_id,
+    })
+    return
+  }
+  next()
+}
+
+/* ******************************
+ * Check review data and return errors or continue (Added for Task 5)
+ * Middleware to validate review input and render errors
+ * ***************************** */
+validate.checkReviewData = async (req, res, next) => {
+  const { review_text, review_id, inv_id } = req.body
+  let errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("review/edit", {
+      errors,
+      title: "Edit Review",
+      nav,
+      review_text,
+      review_id,
+      inv_id,
     })
     return
   }

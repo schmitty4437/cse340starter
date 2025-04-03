@@ -5,8 +5,7 @@
     <div id="tools">
         <!-- W11 Task 1 -->
         <% if (locals.loggedin) { %>
-            <a title="Manage your account" href="/account/management">Welcome <%= locals.accountData.account_firstname
-                    %></a>
+            <a title="Manage your account" href="/account">Welcome <%= locals.accountData.account_firstname %></a>
             <a title="Click to log out" href="/account/logout">Logout</a>
             <% } else { %>
                 <a title="Click to log in" href="/account/login">My Account</a>

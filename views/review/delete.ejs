@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>
+        <%= title %>
+    </h1>
+
+    <!-- Flash messages -->
+    <% if (messages) { %>
+        <div class="flash-messages">
+            <%- messages() %>
+        </div>
+        <% } %>
+
+            <!-- Display validation errors -->
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <!-- Review details (non-editable) -->
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label>Review Date:</label>
+                            <p>
+                                <%= review_date %>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Review Text:</label>
+                            <p>
+                                <%= review_text %>
+                            </p>
+                        </div>
+                        <form action="/review/delete" method="post">
+                            <input type="hidden" name="review_id" value="<%= review_id %>">
+                            <input type="submit" value="Delete Review" class="submit-button">
+                        </form>
+                    </div>
+</div>

@@ -19,6 +19,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const reviewRoute = require("./routes/reviewRoute")
 
 
 /* ***********************
@@ -65,7 +66,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
-
+// Final W12 Task 3 Mount reviewRoute for review functionality
+app.use("/review", reviewRoute)
 
 // 505 error route
 app.use(errorRoute)

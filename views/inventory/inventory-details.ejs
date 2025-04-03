@@ -1,10 +1,73 @@
-<!-- View will contain content heading, message, and vehicle details display -->
 <div class="container">
+    <!-- Title -->
     <% if (title) { %>
         <h1>
             <%= title %>
         </h1>
-        <% } else { res.redirect('/') } %>
+        <% } else { %>
+            <% res.redirect('/') %>
+                <% } %>
 
-            <%- vehicleDetails %>
+                    <!-- Flash Messages -->
+                    <% if (messages && messages.length> 0) { %>
+                        <div class="flash-messages">
+                            <% messages.forEach(message=> { %>
+                                <p>
+                                    <%= message %>
+                                </p>
+                                <% }) %>
+                        </div>
+                        <% } %>
+                            <!-- Vehicle Details -->
+                            <%- vehicleDetails %>
+
+                                <!--Final W12/13 Task 3.C Review section with display, form, and login prompt -->
+                                <section class="reviews-section">
+                                    <h2>Customer Reviews</h2>
+                                    <% if (reviews && reviews.length> 0) { %>
+                                        <% reviews.forEach(review=> { %>
+                                            <div class="review">
+                                                <p>
+                                                    <%= review.review_text %>
+                                                </p>
+                                                <p><em>— <%= review.account_firstname.charAt(0) +
+                                                            review.account_lastname %> on <%=
+                                                                review.review_date.toLocaleDateString() %></em></p>
+                                                <% if (locals.loggedin &&
+                                                    locals.accountData.account_id===review.account_id) { %>
+                                                    <a href="/review/edit/<%= review.review_id %>"
+                                                        class="submit-button">Edit</a>
+                                                    <a href="/review/delete-confirm/<%= review.review_id %>"
+                                                        class="submit-button">Delete</a>
+                                                    <% } %>
+                                            </div>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <p>No reviews yet.</p>
+                                                    <% } %>
+
+                                                        <% if (!locals.loggedin) { %>
+                                                            <p>Please <a href="/account/login">log in</a> to add a
+                                                                review.</p>
+                                                            <% } else { %>
+                                                                <form id="addReviewForm" action="/review/add"
+                                                                    method="post" class="form-container">
+                                                                    <div class="form-group">
+                                                                        <label for="review_text">Write a Review:</label>
+                                                                        <textarea id="review_text" name="review_text"
+                                                                            required aria-required="true"></textarea>
+                                                                    </div>
+                                                                    <p>Reviewing as: <strong>
+                                                                            <%= locals.accountData.account_firstname.charAt(0)
+                                                                                + locals.accountData.account_lastname %>
+                                                                        </strong></p>
+                                                                    <input type="hidden" name="inv_id"
+                                                                        value="<%= inv_id %>">
+                                                                    <input type="hidden" name="account_id"
+                                                                        value="<%= locals.accountData.account_id %>">
+                                                                    <input type="submit" value="Submit Review"
+                                                                        class="submit-button">
+                                                                </form>
+                                                                <% } %>
+                                </section>
 </div>

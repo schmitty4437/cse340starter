@@ -34,6 +34,31 @@
                                 <h3>Inventory Management</h3>
                                 <p><a href="/inv/" class="submit-button">Manage Inventory</a></p>
                                 <% } %>
+
+                                    <!-- Final w12 Task 4 - Display user's reviews -->
+                                    <h3>Your Reviews</h3>
+                                    <% if (reviews && reviews.length> 0) { %>
+                                        <ul class="review-list">
+                                            <% reviews.forEach(review=> { %>
+                                                <li>
+                                                    <p>
+                                                        <%= review.review_text %>
+                                                    </p>
+                                                    <p>Vehicle: <%= review.inv_make %>
+                                                            <%= review.inv_model %>
+                                                    </p>
+                                                    <p>Date: <%= review.review_date.toLocaleDateString() %>
+                                                    </p>
+                                                    <a href="/review/edit/<%= review.review_id %>"
+                                                        class="submit-button">Edit</a>
+                                                    <a href="/review/delete-confirm/<%= review.review_id %>"
+                                                        class="submit-button">Delete</a>
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                        <% } else { %>
+                                            <p>You have not written any reviews yet.</p>
+                                            <% } %>
         </div>
     </div>
 </div>

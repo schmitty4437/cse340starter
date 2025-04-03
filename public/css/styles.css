@@ -501,6 +501,104 @@ td a:hover {
   color: #fff;
 }
 
+
+/* Review List in Account Management */
+.review-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.review-list li {
+  background-color: #01366e;
+  border: 1px solid rgb(1, 1, 45);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-list p {
+  margin: 5px 0;
+  font-size: clamp(0.9rem, 0.9vw, 1rem);
+}
+
+.review-list .submit-button {
+  margin: 5px 10px 0 0;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+/* Edit Review Form */
+.form-container textarea {
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.form-container .form-group {
+  margin-bottom: 15px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+/* Delete Review Confirmation */
+.review-details {
+  background-color: #d1e7ff;
+  border: 1px solid rgb(1, 1, 45);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.review-details p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.review-details label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px;
+}
+
+#addReviewForm.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  padding: 20px;
+  background-color: rgb(1, 1, 45);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#addReviewForm .form-group {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+#addReviewForm textarea {
+  width: 100%;
+  min-height: 120px;
+}
+
+.reviews-section .review {
+  background-color: #d1e7ff;
+  border: 1px solid #01012d;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #01012d;
+}
+
+
 /* Large screen */
 @media screen and (min-width: 768px) {
   #wrapper {
@@ -617,6 +715,25 @@ td a:hover {
   .form button {
     font-size: 1.2rem;
     padding: 12px;
+  }
+
+  .review-list li {
+    padding: 20px;
+  }
+
+  .review-details {
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+
+  .form-container textarea {
+    font-size: 1.2rem;
+  }
+
+  #addReviewForm.form-container {
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
 }
 
