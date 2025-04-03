@@ -30,21 +30,36 @@ async function buildEditReview(req, res, next) {
   const review_id = parseInt(req.params.review_id);
   let nav = await utilities.getNav();
   try {
-    // Task 5 Fetch review for editing
+    // Gets the review for editing
     const review = await reviewModel.getReviewById(review_id);
-    if (!review || res.locals.accountData.account_id !== review.account_id) {
+    if (!review) {
+      req.flash("notice", "Review not found.");
+      return res.redirect("/account/");
+    }
+    if (res.locals.accountData.account_id !== review.account_id) {
       req.flash("notice", "You can only edit your own reviews.");
       return res.redirect("/account/");
     }
+
+    // Get vehicle data for the title
+    const vehicleData = await invModel.getInventoryById(review.inv_id);
+    if (!vehicleData) {
+      req.flash("notice", "Vehicle not found.");
+      return res.redirect("/account/");
+    }
+
+    const title = `Edit ${vehicleData.inv_year} ${vehicleData.inv_make} ${vehicleData.inv_model} Review`;
     res.render("review/edit", {
-      title: "Edit Review",
+      title,
       nav,
       errors: null,
       review_id: review.review_id,
       review_text: review.review_text,
+      review_date: review.review_date,
       inv_id: review.inv_id,
     });
   } catch (error) {
+    console.error("buildEditReview error:", error);
     req.flash("notice", "Error loading review.");
     res.redirect("/account/");
   }

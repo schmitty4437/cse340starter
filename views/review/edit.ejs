@@ -6,11 +6,7 @@
     <!-- W12 final Task 5 Display flash messages -->
     <% if (messages && messages.length> 0) { %>
         <div class="flash-messages">
-            <% if (messages) { %>
-                <div class="flash-messages">
-                    <%- messages() %>
-                </div>
-                <% } %>
+            <%- messages() %>
         </div>
         <% } %>
 
@@ -25,15 +21,21 @@
                 </ul>
                 <% } %>
 
-                    <!-- W12 final Task 5 Form to edit review with sticky values -->
-                    <form action="/review/update" method="post" class="form-container">
-                        <div class="form-group">
-                            <label for="review_text">Review Text:</label>
-                            <textarea id="review_text" name="review_text"
-                                required><%= locals.review_text || '' %></textarea>
-                        </div>
-                        <input type="hidden" name="review_id" value="<%= locals.review_id || '' %>">
-                        <input type="hidden" name="inv_id" value="<%= locals.inv_id || '' %>">
-                        <input type="submit" value="Update Review" class="submit-button">
-                    </form>
+                    <!-- W12 final Task 5 Form with review date and editable text -->
+                    <div class="form-container">
+                        <form action="/review/update" method="post" class="form">
+                            <div class="form-group">
+                                <p><strong>Review Date:</strong>
+                                    <%= review_date.toLocaleDateString() %>
+                                </p>
+                                <label for="review_text">Review Text:</label>
+                                <textarea id="review_text" name="review_text"
+                                    required><%= review_text || '' %></textarea>
+                            </div>
+                            <input type="hidden" name="review_id" value="<%= review_id || '' %>">
+                            <input type="hidden" name="inv_id" value="<%= inv_id || '' %>">
+                            <input type="submit" value="Update Review" class="submit-button">
+                        </form>
+                        <p><a href="/account" class="submit-button">Back to Account</a></p>
+                    </div>
 </div>
